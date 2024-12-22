@@ -12,7 +12,7 @@ public class SpawnManager : MonoBehaviour
     public int maxFloors = 2;          // Anzahl der Floors, die gleichzeitig existieren sollen
     public float rotation = 10f;
 
-    
+
     private void Awake()
     {
         // Singleton einrichten
@@ -26,7 +26,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    
+
     private void Start()
     {
         // Initiale Floors generieren (z. B. erster Floor + ein weiterer)
@@ -35,8 +35,6 @@ public class SpawnManager : MonoBehaviour
         UpdatePlayerRotation(rotation);
         GameObject firstFloor = Instantiate(floorPrefab, Vector3.zero, initialRotation);
         activeFloors.Add(firstFloor);
-
-        //SpawnNewFloor(firstFloor.transform);
     }
 
     public void SpawnNewFloor(Transform currentFloor)
@@ -44,7 +42,7 @@ public class SpawnManager : MonoBehaviour
         // Berechne die Position und Rotation des neuen Floors
         Vector3 newPosition = currentFloor.position + currentFloor.forward * currentFloor.localScale.z;
         Quaternion newRotation = currentFloor.rotation;
-        
+
         // Erstelle den neuen Floor
         // Erstelle den neuen Floor und füge ihn zur Liste hinzu
         GameObject newFloor = Instantiate(floorPrefab, newPosition, newRotation);
