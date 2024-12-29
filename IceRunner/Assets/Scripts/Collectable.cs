@@ -8,6 +8,11 @@ public class Collectable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Collectible"))
+        {
+            return;
+        }
+
         string itemName = other.gameObject.name;
         if (validCollectibles.Contains(itemName))
         {
