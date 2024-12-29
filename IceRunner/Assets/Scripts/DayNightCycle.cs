@@ -11,6 +11,7 @@ public class DayNightCycle : MonoBehaviour
 
     void Start()
     {
+        startDay = true;
         if (directionalLight == null)
         {
             var childLight = transform.Find("Directional Light");
