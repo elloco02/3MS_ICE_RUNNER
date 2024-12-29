@@ -2,18 +2,54 @@ using UnityEngine;
 
 public class DayNightCycle : MonoBehaviour
 {
-    //value sollte passend zum ziel score sein damit der tag rum ist, wenn das Ziel erreicht ist
-    public float dayLength = 10f;
+    public Transform directionalLight; 
+    public float cycleDuration = 1f;
+    public int pointsToCompleteDay = 100; 
+    public bool startDay = false;
 
-    private Transform _transform;
+    private float _rotationSpeed;
 
     void Start()
     {
-        _transform = GetComponent<Transform>();
+        if (directionalLight == null)
+        {
+            var childLight = transform.Find("Directional Light");
+            if (childLight != null)
+            {
+                directionalLight = childLight.GetComponent<Transform>();
+            }
+
+            if (directionalLight == null)
+            {
+                Debug.LogError("Directional light not found.");
+                return;
+            }
+        }        
+        if (directionalLight == null)
+        {
+            Debug.LogError("Directional Light ist nicht zugewiesen.");
+            return;
+        }
+
     }
 
     void Update()
     {
-        _transform.Rotate(dayLength * Time.deltaTime, 0, 0);
+        if (!startDay) return;
+        
+        float adjustedSpeed = (cycleDuration / 30) * pointsToCompleteDay;
+        directionalLight.transform.Rotate(Vector3.right, adjustedSpeed * Time.deltaTime);
+    }
+
+    public void EndDay()
+    {
+        Debug.Log("Day Ended!");
+        startDay = false; 
+    }
+
+    public void StartNewDay()
+    {
+        Debug.Log("New Day Started!");
+        startDay = true;
     }
 }
