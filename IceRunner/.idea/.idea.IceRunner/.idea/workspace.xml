@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4aa4b7c1-6398-471a-84f1-44eb8f6937b3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Basics.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Basics.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/TileScene2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tiles/TileScene2.unity" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "8-create-new-tiles-for-level-generation-for-level-builder",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+</project>
