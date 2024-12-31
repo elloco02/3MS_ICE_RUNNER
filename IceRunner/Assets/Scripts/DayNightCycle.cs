@@ -3,10 +3,10 @@ using UnityEngine;
 public class DayNightCycle : MonoBehaviour
 {
     public Transform directionalLight; 
-    public float cycleDuration = 1f;
-    public int pointsToCompleteDay = 100; 
-    public bool startDay = false;
-
+    public float cycleDurationInSeconds = 30;
+    
+    private bool _startDay = false;
+    private float _currentRotation = 0f;
     private float _rotationSpeed;
 
     void Start()
@@ -36,21 +36,29 @@ public class DayNightCycle : MonoBehaviour
 
     void Update()
     {
-        if (!startDay) return;
+        if (!_startDay) return;
         
-        float adjustedSpeed = (cycleDuration / 30) * pointsToCompleteDay;
-        directionalLight.transform.Rotate(Vector3.right, adjustedSpeed * Time.deltaTime);
+        float rotationPerSecond = 360f / cycleDurationInSeconds;
+        directionalLight.Rotate(Vector3.right, rotationPerSecond * Time.deltaTime);
+        
+        _currentRotation += rotationPerSecond * Time.deltaTime;
+        if (_currentRotation >= 180f)
+        {
+            EndDay();
+        }
     }
 
     public void EndDay()
     {
         Debug.Log("Day Ended!");
-        startDay = false; 
+        _startDay = false; 
+        
+        //Change Scene to Bar when day ends
     }
 
     public void StartNewDay()
     {
         Debug.Log("New Day Started!");
-        startDay = true;
+        _startDay = true;
     }
 }

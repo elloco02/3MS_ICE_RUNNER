@@ -497,8 +497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionalLight: {fileID: 0}
-  cycleDuration: 1
-  pointsToCompleteDay: 100
+  cycleDurationInSeconds: 30
   startDay: 1
 --- !u!1 &1935060139
 GameObject:
