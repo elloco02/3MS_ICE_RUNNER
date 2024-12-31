@@ -5,7 +5,7 @@ public class DayNightCycle : MonoBehaviour
     public Transform directionalLight; 
     public float cycleDurationInSeconds = 30;
     
-    private bool _startDay = false;
+    private bool _dayRunning = false;
     private float _currentRotation = 0f;
     private float _rotationSpeed;
 
@@ -36,7 +36,7 @@ public class DayNightCycle : MonoBehaviour
 
     void Update()
     {
-        if (!_startDay) return;
+        if (!_dayRunning) return;
         
         float rotationPerSecond = 360f / cycleDurationInSeconds;
         directionalLight.Rotate(Vector3.right, rotationPerSecond * Time.deltaTime);
@@ -48,17 +48,21 @@ public class DayNightCycle : MonoBehaviour
         }
     }
 
-    private void EndDay()
+    public void EndDay()
     {
         Debug.Log("Day Ended!");
-        _startDay = false; 
-        
+        _dayRunning = false;
         //Change Scene to Bar when day ends
     }
 
     private void StartNewDay()
     {
         Debug.Log("New Day Started!");
-        _startDay = true;
+        _dayRunning = true;
+    }
+    
+    public bool IsDay()
+    {
+        return _dayRunning;
     }
 }
