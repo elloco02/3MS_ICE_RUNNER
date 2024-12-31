@@ -48,7 +48,7 @@ public class DayNightCycle : MonoBehaviour
         }
     }
 
-    public void EndDay()
+    private void EndDay()
     {
         Debug.Log("Day Ended!");
         _startDay = false; 
@@ -56,7 +56,7 @@ public class DayNightCycle : MonoBehaviour
         //Change Scene to Bar when day ends
     }
 
-    public void StartNewDay()
+    private void StartNewDay()
     {
         Debug.Log("New Day Started!");
         _startDay = true;
