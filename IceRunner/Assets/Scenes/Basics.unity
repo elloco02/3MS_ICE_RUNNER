@@ -348,6 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floorPrefabs:
   - {fileID: 8863254488261516915, guid: 23ddec8ef3b831849b6919d2e8553b89, type: 3}
+  - {fileID: 6806192569075084592, guid: c9640515251e1654484773549bbd825f, type: 3}
   player: {fileID: 1710185589}
   maxFloors: 2
   rotation: 10
@@ -365,6 +366,7 @@ GameObject:
   - component: {fileID: 1710185587}
   - component: {fileID: 1710185590}
   - component: {fileID: 1710185591}
+  - component: {fileID: 1710185592}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -407,7 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c34d6f0668824343b6a97726e1c6b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
+  moveSpeed: 10
   speedIncreaseRate: 0.1
   maxMoveSpeed: 50
   gravity: -9.81
@@ -478,6 +480,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1deccdee7413fb14883fd5b925319320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayNightCycle: {fileID: 1721942727}
+--- !u!114 &1710185592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710185584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c001f5403e465474990679fe4149c987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dayNightCycle: {fileID: 1721942727}
