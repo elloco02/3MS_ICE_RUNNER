@@ -1,11 +1,14 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance;  // Singleton-Instanz
 
-    public GameObject floorPrefab;       // Referenz auf das Floor-Prefab
+    public List<GameObject> floorPrefabs;       // Referenz auf das Floor-Prefab
     public Transform player;            // Referenz auf den Spieler
 
     private List<GameObject> activeFloors = new List<GameObject>(); // Liste der aktiven Floors
@@ -33,19 +36,22 @@ public class SpawnManager : MonoBehaviour
         Quaternion initialRotation = Quaternion.Euler(rotation, 0f, 0f);
         // Aktualisiere die Spielerrotation
         UpdatePlayerRotation(rotation);
-        GameObject firstFloor = Instantiate(floorPrefab, Vector3.zero, initialRotation);
+        var randomTileFromList = RandomFloorFromList();
+        GameObject firstFloor = Instantiate(randomTileFromList, Vector3.zero, initialRotation);
         activeFloors.Add(firstFloor);
     }
 
     public void SpawnNewFloor(Transform currentFloor)
     {
+        var randomTileFromList = RandomFloorFromList();
+        
         // Berechne die Position und Rotation des neuen Floors
         Vector3 newPosition = currentFloor.position + currentFloor.forward * currentFloor.localScale.z;
         Quaternion newRotation = currentFloor.rotation;
 
         // Erstelle den neuen Floor
         // Erstelle den neuen Floor und füge ihn zur Liste hinzu
-        GameObject newFloor = Instantiate(floorPrefab, newPosition, newRotation);
+        GameObject newFloor = Instantiate(randomTileFromList, newPosition, newRotation);
         activeFloors.Add(newFloor);
 
         // Aktualisiere die Spielerrotation
@@ -66,4 +72,10 @@ public class SpawnManager : MonoBehaviour
         Quaternion playerRotation = Quaternion.Euler(floorRotation, 0f, 0f);
         player.rotation = playerRotation;
     }
+    
+    private GameObject RandomFloorFromList()
+    {
+        return floorPrefabs[Random.Range(0, floorPrefabs.Count)];
+    }
+
 }
