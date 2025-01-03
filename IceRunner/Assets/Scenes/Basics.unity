@@ -350,7 +350,7 @@ MonoBehaviour:
   - {fileID: 8863254488261516915, guid: 23ddec8ef3b831849b6919d2e8553b89, type: 3}
   - {fileID: 6806192569075084592, guid: c9640515251e1654484773549bbd825f, type: 3}
   player: {fileID: 1710185589}
-  maxFloors: 3
+  firstNFloors: 5
   rotation: 10
 --- !u!1 &1710185584
 GameObject:
@@ -409,11 +409,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c34d6f0668824343b6a97726e1c6b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  speedIncreaseRate: 0.1
-  maxMoveSpeed: 50
+  moveSpeed: 20
+  speedIncreaseRate: 0.2
+  maxMoveSpeed: 150
   gravity: -9.81
-  jumpHeight: 2
+  jumpHeight: 4
+  gravityFactor: 2
+  smoothingFactor: 5
 --- !u!143 &1710185588
 CharacterController:
   m_ObjectHideFlags: 0
