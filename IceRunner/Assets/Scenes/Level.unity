@@ -939,7 +939,7 @@ MonoBehaviour:
   - {fileID: 8863254488261516915, guid: 23ddec8ef3b831849b6919d2e8553b89, type: 3}
   - {fileID: 6806192569075084592, guid: c9640515251e1654484773549bbd825f, type: 3}
   player: {fileID: 1710185589}
-  firstNFloors: 5
+  firstNFloors: 3
   rotation: 10
 --- !u!1 &1469112073
 GameObject:
