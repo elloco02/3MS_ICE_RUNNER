@@ -10,12 +10,15 @@ public class movement : MonoBehaviour
 
     Vector2 moveDirection = Vector2.zero;
     Vector3 movePlayer = Vector3.zero;
-    [SerializeField] private float moveSpeed = 0.5f;
-    [SerializeField] private float speedIncreaseRate = 0.1f; // acceleration as time flies
-    [SerializeField] private int maxMoveSpeed = 50;
+    [SerializeField] private float moveSpeed = 20f;
+    [SerializeField] private float speedIncreaseRate = 0.2f; // acceleration as time flies
+    [SerializeField] private int maxMoveSpeed = 150;
     [SerializeField] private float gravity = -9.81f;
-    [SerializeField] private float jumpHeight = 2f;
+    [SerializeField] private float jumpHeight = 4f;
+    [SerializeField] private float gravityFactor = 2f;
+    [SerializeField] private float smoothingFactor = 5f; // Wie schnell die Bewegung reagiert
 
+    private float smoothedMoveX = 0f;
     private float currentMoveSpeed;
     private Vector3 velocity;
     private bool canJump = true;
@@ -58,7 +61,13 @@ public class movement : MonoBehaviour
         }
 
         moveDirection = move.ReadValue<Vector2>();
-        movePlayer = this.transform.right * moveDirection.x + this.transform.forward;
+
+        // Glättung der horizontalen Bewegung
+        smoothedMoveX = Mathf.Lerp(smoothedMoveX, moveDirection.x, Time.deltaTime * smoothingFactor);
+
+        // Bewegungsrichtung mit geglätteter horizontaler Eingabe
+        movePlayer = this.transform.right * smoothedMoveX + this.transform.forward;
+        
         playerController.Move(movePlayer * currentMoveSpeed * Time.deltaTime);
 
         // Jump logic
@@ -69,7 +78,7 @@ public class movement : MonoBehaviour
         }
 
         // apply gravity
-        velocity.y += gravity * Time.deltaTime;
+        velocity.y += gravity * Time.deltaTime * gravityFactor;
         playerController.Move(velocity * Time.deltaTime);
     }
 }
