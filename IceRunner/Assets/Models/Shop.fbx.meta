@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: acb0b2c2ce3d1a14095f32be193c4e8d
+guid: a72bada85b094ff4c9dd38fe61ca7fdb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: counter_base
+    second: {fileID: 2100000, guid: 7b6b5da2127fdc641899b237cfb9a8e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: counter_side
+    second: {fileID: 2100000, guid: 2f2e0a110611d654f81ca893162905d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: counter_top
+    second: {fileID: 2100000, guid: 5662262d6ada84440b61f48fff09ffd9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -3,7 +3,17 @@ guid: 6c635905af1451049b22f110f212b791
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Logs
+    second: {fileID: 2100000, guid: c9f2193570692a0458b2a6d6ace7528e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kahmin
+    second: {fileID: 2100000, guid: 29683c9d89201404b87bb08f5c6c6cd9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
