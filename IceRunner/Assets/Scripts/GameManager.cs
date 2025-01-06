@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 
     public float currentMoveSpeed = 20f; // Startgeschwindigkeit
     public float maxMoveSpeed = 200;
-    public int currentScore = 0;    // Aktueller Score
+    public int currentHighScore = 0;    // Aktueller Score
 
     private void Awake()
     {
@@ -33,15 +33,15 @@ public class GameManager : MonoBehaviour
     }
 
     // Score hinzufügen
-    public void AddScore(int scoreToAdd)
+    public void AddScore(int scoreFromRoundToAdd)
     {
-        currentScore += scoreToAdd;
+        currentHighScore += scoreFromRoundToAdd;
     }
 
     // Werte zurücksetzen (z. B. nach einem Spielende)
     public void ResetGame()
     {
         currentMoveSpeed = 20f;
-        currentScore = 0;
+        currentHighScore = 0;
     }
 }
