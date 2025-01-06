@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fdb8c61ee64c63c4e83294e51cc86dc4
+guid: 91d52f12d40b3f84aacb6ccce500d627
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Leaf_Mat
-    second: {fileID: 2100000, guid: 6580f9310bd200a4b9d705d9ec318047, type: 2}
+      name: Material
+    second: {fileID: 2100000, guid: 04b17f2f69a0e8149b6168e4004bc0b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 78ff3fc945b97e647a537f292f08e836, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: b7d9f494f6d41774d8c549fc8b239780, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
