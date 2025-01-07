@@ -5,6 +5,26 @@ public class Collectable : MonoBehaviour
 {
     private Dictionary<string, int> collectibles = new Dictionary<string, int>();
     public List<string> validCollectibles = new List<string>();
+    public static Collectable Instance { get; private set; }
+
+    private void Start()
+    {
+        int savedCoins = PlayerPrefs.GetInt("CoinCount", 0);
+        collectibles["Coin"] = savedCoins;
+    }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Debug.LogError("Multiple instances of Collectable found!");
+            Destroy(gameObject);
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -37,6 +57,12 @@ public class Collectable : MonoBehaviour
         }
 
         collectibles[itemName] += amount;
+
+        if (itemName == "Coin")
+        {
+            PlayerPrefs.SetInt("CoinCount", collectibles[itemName]);
+            PlayerPrefs.Save();
+        }
     }
 
     public void RemoveCollectible(string itemName, int amount = 1)
@@ -55,7 +81,7 @@ public class Collectable : MonoBehaviour
             Debug.LogWarning($"Keine Collectibles mit dem Namen {itemName} vorhanden, die entfernt werden könnten.");
         }
     }
-    
+
     public void PrintCollectiblesCount()
     {
         Debug.Log("Aktuelle Collectibles:");
@@ -63,5 +89,14 @@ public class Collectable : MonoBehaviour
         {
             Debug.Log($"{collectible.Key}: {collectible.Value}");
         }
+    }
+
+    public int GetCoinCount()
+    {
+        if (collectibles.ContainsKey("Coin"))
+        {
+            return collectibles["Coin"];
+        }
+        return 0;
     }
 }
