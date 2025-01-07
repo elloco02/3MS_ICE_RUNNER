@@ -79,6 +79,8 @@ public class movement : MonoBehaviour
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
                 canJump = false;
                 hasDoubleJumped = false; // Reset double jump usage
+                
+                ActivateSpeedBoost();
             }
             else if (canDoubleJump && !hasDoubleJumped) // Double jump logic
             {
@@ -96,17 +98,7 @@ public class movement : MonoBehaviour
         movePlayer = this.transform.right * smoothedMoveX + this.transform.forward;
 
         playerController.Move(movePlayer * moveSpeed * Time.deltaTime);
-
-        // Jump logic
-        if (jump.triggered && canJump)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            canJump = false;
-
-            // Apply speed boost after jump
-            ActivateSpeedBoost();
-        }
-
+        
         // apply gravity
         velocity.y += gravity * Time.deltaTime * gravityFactor;
         playerController.Move(velocity * Time.deltaTime);

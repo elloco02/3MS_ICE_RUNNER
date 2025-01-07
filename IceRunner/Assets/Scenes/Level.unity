@@ -1697,7 +1697,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7fd8a9401f13b74f83583d022e9a294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AbilityForTesting: []
+  abilityForTesting:
+  - {fileID: 11400000, guid: 67f76d7c0d4c5064c8566b71834d0148, type: 2}
   maxItems: 2
 --- !u!1 &1721942725
 GameObject:
