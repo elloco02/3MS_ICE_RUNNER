@@ -1,17 +1,27 @@
+using System;
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 
 namespace AbilitySystem
 {
     public class PlayerAbilitySystem : MonoBehaviour
     {
-        public Ability abilityForTesting;
+        public List<Ability> AbilityForTesting;
         public int maxItems = 1; 
         private Ability[] _equippedAbilities;
 
         void Start()
         {
             _equippedAbilities = new Ability[maxItems];
-            AddAbility(abilityForTesting);
+            
+            if (AbilityForTesting != null)
+            {
+                foreach (var t in AbilityForTesting)
+                {
+                    AddAbility(t);
+                }
+            }
         }
 
         void Update()
