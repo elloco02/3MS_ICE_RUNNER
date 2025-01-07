@@ -128,7 +128,7 @@ public class SpawnManager : MonoBehaviour
         }
 
         // Fallback: Standardwert für Tile Länge (falls keine Länge ermittelt werden kann)
-        return 50f;
+        return 150f;
     }
 
 
