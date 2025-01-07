@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DayNightCycle : MonoBehaviour
 {
@@ -52,9 +53,10 @@ public class DayNightCycle : MonoBehaviour
     {
         Debug.Log("Day Ended!");
         _dayRunning = false;
-        //Change Scene to Bar when day ends
+        SpawnManager.Instance.SpawnLastTile();
     }
 
+    
     private void StartNewDay()
     {
         Debug.Log("New Day Started!");

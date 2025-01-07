@@ -67,6 +67,7 @@ public class Collectable : MonoBehaviour
 
     public void RemoveCollectible(string itemName, int amount = 1)
     {
+        print("reducing collectible: " + itemName + "by " + amount);
         if (collectibles.ContainsKey(itemName))
         {
             collectibles[itemName] -= amount;
@@ -80,6 +81,7 @@ public class Collectable : MonoBehaviour
         {
             Debug.LogWarning($"Keine Collectibles mit dem Namen {itemName} vorhanden, die entfernt werden könnten.");
         }
+        print("left: " + collectibles[itemName]);
     }
 
     public void PrintCollectiblesCount()

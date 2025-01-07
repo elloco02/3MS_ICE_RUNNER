@@ -21,6 +21,7 @@ namespace AbilitySystem
             var coinCount = Collectable.Instance.GetCoinCount();
             if (coinCount >= ability.price)
             {
+                Collectable.Instance.RemoveCollectible("Coin", ability.price);
                 PlayerAbilitySystem.Instance.AddAbility(ability);
             }
         }
