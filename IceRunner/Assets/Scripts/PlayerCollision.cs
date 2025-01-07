@@ -17,6 +17,7 @@ public class PlayerCollision : MonoBehaviour
     
     private void PlayerDied()
     {
+        GameManager.Instance.IncreaseSpeed(20f);
         Debug.Log("Player Died!");
         dayNightCycle.EndDay();
         Destroy(gameObject);
