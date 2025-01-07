@@ -14,11 +14,16 @@ public class movement : MonoBehaviour
     [SerializeField] private float jumpHeight = 4f;
     [SerializeField] private float gravityFactor = 2f;
     [SerializeField] private float smoothingFactor = 5f; // Wie schnell die Bewegung reagiert
+    [SerializeField] private float speedBoostMultiplier = 2.5f;
+    [SerializeField] private float speedBoostDuration = 4f;
+
 
     private float smoothedMoveX = 0f;
     private float moveSpeed;
     private Vector3 velocity;
     private bool canJump = true;
+    private bool isBoostActive = false;
+    private float boostEndTime;
 
 
     private void Awake()
@@ -51,6 +56,13 @@ public class movement : MonoBehaviour
         {
             velocity.y = -2f; // player is forced to ground
             canJump = true;  // allows player to jump from ground
+
+            // Reset speed boost when grounded
+            if (isBoostActive)
+            {
+                moveSpeed = GameManager.Instance.currentMoveSpeed;
+                isBoostActive = false;
+            }
         }
         else
         {
@@ -64,7 +76,7 @@ public class movement : MonoBehaviour
 
         // Bewegungsrichtung mit geglätteter horizontaler Eingabe
         movePlayer = this.transform.right * smoothedMoveX + this.transform.forward;
-        
+
         playerController.Move(movePlayer * moveSpeed * Time.deltaTime);
 
         // Jump logic
@@ -72,10 +84,27 @@ public class movement : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             canJump = false;
+
+            // Apply speed boost after jump
+            ActivateSpeedBoost();
         }
 
         // apply gravity
         velocity.y += gravity * Time.deltaTime * gravityFactor;
         playerController.Move(velocity * Time.deltaTime);
+
+        // Deactivate speed boost after duration
+        if (isBoostActive && Time.time > boostEndTime)
+        {
+            moveSpeed = GameManager.Instance.currentMoveSpeed;
+            isBoostActive = false;
+        }
+    }
+
+    private void ActivateSpeedBoost()
+    {
+        moveSpeed *= speedBoostMultiplier;
+        isBoostActive = true;
+        boostEndTime = Time.time + speedBoostDuration;
     }
 }

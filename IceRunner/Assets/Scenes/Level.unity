@@ -1338,6 +1338,8 @@ MonoBehaviour:
   jumpHeight: 4
   gravityFactor: 2
   smoothingFactor: 5
+  speedBoostMultiplier: 2.5
+  speedBoostDuration: 5
 --- !u!143 &1710185588
 CharacterController:
   m_ObjectHideFlags: 0
