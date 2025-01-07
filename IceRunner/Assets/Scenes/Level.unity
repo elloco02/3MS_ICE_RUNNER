@@ -1037,8 +1037,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorPrefabs:
-  - {fileID: 8863254488261516915, guid: 23ddec8ef3b831849b6919d2e8553b89, type: 3}
-  - {fileID: 6806192569075084592, guid: c9640515251e1654484773549bbd825f, type: 3}
+  - {fileID: 7604208710709652081, guid: 1ecd1c052a857254bb4ebe79adc52d47, type: 3}
+  - {fileID: 7604208710709652081, guid: ce8712042cda95c4eb3ae935b9cde7bd, type: 3}
+  - {fileID: 7604208710709652081, guid: 3ead7a0d6bfa9654ca80d56aa260204a, type: 3}
+  - {fileID: 7604208710709652081, guid: b56a4f883720c04459c9d0c59cef9144, type: 3}
+  - {fileID: 7604208710709652081, guid: 77c3c9d6ac86b3a43b1c4916e4561816, type: 3}
+  - {fileID: 7604208710709652081, guid: 95230c80f0fdf6b4992a72666961f672, type: 3}
+  - {fileID: 7604208710709652081, guid: 1e0237a3c46a9ad49a520b828ca658f5, type: 3}
+  - {fileID: 7604208710709652081, guid: d75cd9e42d2c7fe469196d95663add95, type: 3}
+  - {fileID: 7604208710709652081, guid: edffe54d36d921e48aca54701349ad8a, type: 3}
+  - {fileID: 7604208710709652081, guid: be5f41a90f61dad4a9bccd99bdba7e35, type: 3}
   player: {fileID: 1710185589}
   firstNFloors: 3
   rotation: 10
