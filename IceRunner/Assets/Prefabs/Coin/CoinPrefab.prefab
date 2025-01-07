@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 7659891391713733875}
   - component: {fileID: 7483625546671276469}
   m_Layer: 0
-  m_Name: Collider
+  m_Name: Coin
   m_TagString: Collectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
