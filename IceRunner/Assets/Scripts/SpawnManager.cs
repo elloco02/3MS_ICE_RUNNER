@@ -9,12 +9,14 @@ public class SpawnManager : MonoBehaviour
     public static SpawnManager Instance;  // Singleton-Instanz
 
     public List<GameObject> floorPrefabs;       // Referenz auf das Floor-Prefab
+    public GameObject lastTile;
     public Transform player;            // Referenz auf den Spieler
     private List<GameObject> activeFloors = new List<GameObject>(); // Liste der aktiven Floors
     public int firstNFloors = 3;          // Anzahl der Floors, die gleichzeitig existieren sollen
     public float rotation = 10f;
 
-
+    private bool _roundOver = false;
+    
     private void Awake()
     {
         // Singleton einrichten
@@ -67,8 +69,14 @@ public class SpawnManager : MonoBehaviour
     public void SpawnNewFloor(Transform currentFloor)
     {
         destroyOldestTile(currentFloor);
+        
         var randomTileFromList = RandomFloorFromList();
 
+        if (_roundOver)
+        {
+            randomTileFromList = lastTile;
+        }
+        
         Transform latestFloor = activeFloors[^1].transform;
         // Berechne die Position und Rotation des neuen Floors
         Vector3 newPosition = calculateNextFloorPosition(latestFloor);
@@ -79,6 +87,8 @@ public class SpawnManager : MonoBehaviour
         GameObject newFloor = Instantiate(randomTileFromList, newPosition, newRotation);
         activeFloors.Add(newFloor);
 
+       
+        
         // Aktualisiere die Spielerrotation
         //UpdatePlayerRotation(rotation);
 
@@ -131,5 +141,8 @@ public class SpawnManager : MonoBehaviour
         return 150f;
     }
 
-
+    public void SpawnLastTile()
+    {
+        _roundOver = true;
+    }
 }
