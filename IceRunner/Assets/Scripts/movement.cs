@@ -10,16 +10,13 @@ public class movement : MonoBehaviour
 
     Vector2 moveDirection = Vector2.zero;
     Vector3 movePlayer = Vector3.zero;
-    [SerializeField] private float moveSpeed = 20f;
-    [SerializeField] private float speedIncreaseRate = 0.2f; // acceleration as time flies
-    [SerializeField] private int maxMoveSpeed = 150;
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private float jumpHeight = 4f;
     [SerializeField] private float gravityFactor = 2f;
     [SerializeField] private float smoothingFactor = 5f; // Wie schnell die Bewegung reagiert
 
     private float smoothedMoveX = 0f;
-    private float currentMoveSpeed;
+    private float moveSpeed;
     private Vector3 velocity;
     private bool canJump = true;
 
@@ -28,7 +25,7 @@ public class movement : MonoBehaviour
     {
         inputActions = new InputSystem_Actions();
         playerController = GetComponent<CharacterController>();
-        currentMoveSpeed = moveSpeed;
+        moveSpeed = GameManager.Instance.currentMoveSpeed;
     }
 
     private void OnEnable()
@@ -45,11 +42,11 @@ public class movement : MonoBehaviour
         jump.Disable();
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
-        currentMoveSpeed += speedIncreaseRate * Time.deltaTime;
-        currentMoveSpeed = Mathf.Min(currentMoveSpeed, maxMoveSpeed);
         if (playerController.isGrounded)
         {
             velocity.y = -2f; // player is forced to ground
@@ -68,7 +65,7 @@ public class movement : MonoBehaviour
         // Bewegungsrichtung mit geglätteter horizontaler Eingabe
         movePlayer = this.transform.right * smoothedMoveX + this.transform.forward;
         
-        playerController.Move(movePlayer * currentMoveSpeed * Time.deltaTime);
+        playerController.Move(movePlayer * moveSpeed * Time.deltaTime);
 
         // Jump logic
         if (jump.triggered && canJump)
