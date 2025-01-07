@@ -149,8 +149,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1.8, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1651026363}
+  m_Children: []
   m_Father: {fileID: 1710185589}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2324123
@@ -1092,11 +1091,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!4 &1651026363 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7351545943075352904, guid: d30cde8beaaba6149966a46135cb5223, type: 3}
-  m_PrefabInstance: {fileID: 1969865881}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1705012620
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,7 +1411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a855d5d309123459a3a684f5138715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionalLight: {fileID: 0}
+  directionalLight: {fileID: 492287085}
   cycleDurationInSeconds: 30
 --- !u!1 &1914599160
 GameObject:
