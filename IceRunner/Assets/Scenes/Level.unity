@@ -1292,6 +1292,7 @@ GameObject:
   - component: {fileID: 1710185590}
   - component: {fileID: 1710185591}
   - component: {fileID: 1710185592}
+  - component: {fileID: 1710185593}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1423,6 +1424,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayNightCycle: {fileID: 1721942727}
+--- !u!114 &1710185593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710185584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7fd8a9401f13b74f83583d022e9a294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityForTesting: {fileID: 11400000, guid: bbcfb53d6a5dc134ab699f7b251b55b6, type: 2}
+  maxItems: 1
 --- !u!1 &1721942725
 GameObject:
   m_ObjectHideFlags: 0

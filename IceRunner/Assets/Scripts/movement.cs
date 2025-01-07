@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,7 +26,9 @@ public class movement : MonoBehaviour
     private bool isBoostActive = false;
     private float boostEndTime;
 
-
+    private bool canDoubleJump = false;
+    private bool hasDoubleJumped = false;
+    
     private void Awake()
     {
         inputActions = new InputSystem_Actions();
@@ -69,6 +72,21 @@ public class movement : MonoBehaviour
             canJump = false; // denies jumping in the air
         }
 
+        if (jump.triggered)
+        {
+            if (canJump) // Jump from the ground
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                canJump = false;
+                hasDoubleJumped = false; // Reset double jump usage
+            }
+            else if (canDoubleJump && !hasDoubleJumped) // Double jump logic
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                hasDoubleJumped = true; // Prevent further double jumps
+            }
+        }
+        
         moveDirection = move.ReadValue<Vector2>();
 
         // Glättung der horizontalen Bewegung
@@ -106,5 +124,34 @@ public class movement : MonoBehaviour
         moveSpeed *= speedBoostMultiplier;
         isBoostActive = true;
         boostEndTime = Time.time + speedBoostDuration;
+    }
+
+    public void BoostSpeed(float speedMultiplier, float duration)
+    {
+        StartCoroutine(BoostSpeedCoroutine(speedMultiplier, duration));
+    }
+
+    private IEnumerator BoostSpeedCoroutine(float speedMultiplier, float duration)
+    {
+        float originalSpeed = moveSpeed; 
+        moveSpeed *= speedMultiplier;   
+
+        yield return new WaitForSeconds(duration); 
+
+        moveSpeed = originalSpeed;      
+    }
+
+    public void EnableDoubleJump(float duration)
+    {
+        StartCoroutine(DoubleJumpCoroutine(duration));
+    }
+    
+    private IEnumerator DoubleJumpCoroutine(float duration)
+    {
+        canDoubleJump = true;
+
+        yield return new WaitForSeconds(duration); 
+        
+        canDoubleJump = false;
     }
 }
