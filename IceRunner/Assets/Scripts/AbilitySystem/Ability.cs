@@ -7,6 +7,7 @@ namespace AbilitySystem
         public string abilityName;
         public Sprite icon;
         public float duration;
+        public int price;
 
         public abstract void Activate(GameObject player);
     }

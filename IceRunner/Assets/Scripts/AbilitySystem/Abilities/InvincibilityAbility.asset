@@ -15,3 +15,4 @@ MonoBehaviour:
   abilityName: InvincibilityAbility
   icon: {fileID: 21300000, guid: 07d9394d02a1944239cb938e45f6fb7c, type: 3}
   duration: 10
+  price: 32

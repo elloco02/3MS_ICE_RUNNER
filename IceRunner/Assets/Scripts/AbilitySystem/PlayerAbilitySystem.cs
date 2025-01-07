@@ -7,17 +7,32 @@ namespace AbilitySystem
 {
     public class PlayerAbilitySystem : MonoBehaviour
     {
-        public List<Ability> AbilityForTesting;
+        public static PlayerAbilitySystem Instance { get; private set; }
+        
+        public List<Ability> abilityForTesting;
         public int maxItems = 1; 
         private Ability[] _equippedAbilities;
 
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Debug.LogError("Multiple instances of PlayerAbilitySystem found!");
+                Destroy(gameObject);
+            }
+        }
+        
         void Start()
         {
             _equippedAbilities = new Ability[maxItems];
             
-            if (AbilityForTesting != null)
+            if (abilityForTesting != null)
             {
-                foreach (var t in AbilityForTesting)
+                foreach (var t in abilityForTesting)
                 {
                     AddAbility(t);
                 }

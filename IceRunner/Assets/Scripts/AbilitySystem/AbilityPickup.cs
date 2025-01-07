@@ -15,12 +15,16 @@ namespace AbilitySystem
             _button.onClick.AddListener(BuyAbility);
         }
 
-        public void BuyAbility()
+        private void BuyAbility()
         {
             print("Buying ability: " + ability.abilityName);
-            
-            
+            var coinCount = Collectable.Instance.GetCoinCount();
+            if (coinCount >= ability.price)
+            {
+                PlayerAbilitySystem.Instance.AddAbility(ability);
+            }
         }
+        
         private void OnTriggerEnter(Collider other)
         {
             PlayerAbilitySystem abilitySystem = other.GetComponent<PlayerAbilitySystem>();
