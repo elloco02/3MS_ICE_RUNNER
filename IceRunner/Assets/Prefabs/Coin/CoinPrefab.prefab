@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 437113398135408985}
+  - component: {fileID: 7763131060801868185}
   m_Layer: 0
   m_Name: CoinPrefab
   m_TagString: Collectible
@@ -32,6 +33,20 @@ Transform:
   - {fileID: 8386384281410726652}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7763131060801868185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340669895816680492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e7f8ae278e3fb4f83da8d081cc0f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSpeed: 10
+  maxSpeed: 100
 --- !u!1 &2949152057771496220
 GameObject:
   m_ObjectHideFlags: 0
