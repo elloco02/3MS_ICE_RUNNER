@@ -1284,7 +1284,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorPrefabs:
-  - {fileID: 7604208710709652081, guid: 1ecd1c052a857254bb4ebe79adc52d47, type: 3}
   - {fileID: 7604208710709652081, guid: ce8712042cda95c4eb3ae935b9cde7bd, type: 3}
   - {fileID: 7604208710709652081, guid: 3ead7a0d6bfa9654ca80d56aa260204a, type: 3}
   - {fileID: 7604208710709652081, guid: b56a4f883720c04459c9d0c59cef9144, type: 3}
