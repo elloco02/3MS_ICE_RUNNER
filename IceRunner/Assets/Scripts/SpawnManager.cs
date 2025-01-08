@@ -10,13 +10,14 @@ public class SpawnManager : MonoBehaviour
 
     public List<GameObject> floorPrefabs;       // Referenz auf das Floor-Prefab
     public GameObject lastTile;
+    public GameObject firstTile;
     public Transform player;            // Referenz auf den Spieler
     private List<GameObject> activeFloors = new List<GameObject>(); // Liste der aktiven Floors
     public int firstNFloors = 3;          // Anzahl der Floors, die gleichzeitig existieren sollen
     public float rotation = 10f;
 
     private bool _roundOver = false;
-    
+
     private void Awake()
     {
         // Singleton einrichten
@@ -33,12 +34,12 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
-        // Initiale Floors generieren (z. B. erster Floor + ein weiterer)
+        // Initiale Floors generieren (erster Floor + ein weiterer)
         Quaternion initialRotation = Quaternion.Euler(rotation, 0f, 0f);
         // Aktualisiere die Spielerrotation
         UpdatePlayerRotation(rotation);
-        var randomTileFromList = RandomFloorFromList();
-        GameObject firstFloor = Instantiate(randomTileFromList, Vector3.zero, initialRotation);
+        var firstTileFromList = firstTile;
+        GameObject firstFloor = Instantiate(firstTileFromList, Vector3.zero, initialRotation);
         activeFloors.Add(firstFloor);
     }
 
@@ -69,14 +70,14 @@ public class SpawnManager : MonoBehaviour
     public void SpawnNewFloor(Transform currentFloor)
     {
         destroyOldestTile(currentFloor);
-        
+
         var randomTileFromList = RandomFloorFromList();
 
         if (_roundOver)
         {
             randomTileFromList = lastTile;
         }
-        
+
         Transform latestFloor = activeFloors[^1].transform;
         // Berechne die Position und Rotation des neuen Floors
         Vector3 newPosition = calculateNextFloorPosition(latestFloor);
@@ -87,8 +88,8 @@ public class SpawnManager : MonoBehaviour
         GameObject newFloor = Instantiate(randomTileFromList, newPosition, newRotation);
         activeFloors.Add(newFloor);
 
-       
-        
+
+
         // Aktualisiere die Spielerrotation
         //UpdatePlayerRotation(rotation);
 
@@ -106,7 +107,8 @@ public class SpawnManager : MonoBehaviour
         return floorPrefabs[Random.Range(0, floorPrefabs.Count)];
     }
 
-    private static Vector3 calculateNextFloorPosition(Transform referenceFloor){
+    private static Vector3 calculateNextFloorPosition(Transform referenceFloor)
+    {
         return referenceFloor.position + referenceFloor.forward * GetTileLength(referenceFloor.gameObject);
     }
 
