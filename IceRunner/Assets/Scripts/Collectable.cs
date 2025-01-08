@@ -6,6 +6,8 @@ public class Collectable : MonoBehaviour
     private Dictionary<string, int> collectibles = new Dictionary<string, int>();
     public List<string> validCollectibles = new List<string>();
     public static Collectable Instance { get; private set; }
+    public AudioSource coinAudioSource;
+    public AudioClip coinPickupSound;
 
     private void Start()
     {
@@ -41,6 +43,7 @@ public class Collectable : MonoBehaviour
 
             if (itemName == "Coin")
             {
+                coinAudioSource.PlayOneShot(coinPickupSound);
                 PopupController.Instance.ShowPopup("Coin +1");
             }
 
