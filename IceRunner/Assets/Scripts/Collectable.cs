@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Collectable : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Collectable : MonoBehaviour
     public static Collectable Instance { get; private set; }
     public AudioSource coinAudioSource;
     public AudioClip coinPickupSound;
+    [SerializeField] public TextMeshProUGUI sessionCoinCount;
 
     private void Start()
     {
@@ -66,6 +68,14 @@ public class Collectable : MonoBehaviour
 
         collectibles[itemName] += amount;
 
+        // Coins collected till round end
+        if (!collectibles.ContainsKey("sessionCoin"))
+        {
+            collectibles["sessionCoin"] = 0;
+        }
+        collectibles["sessionCoin"] += amount;
+        updateSessionCoinCount();
+
         if (itemName == "Coin")
         {
             PlayerPrefs.SetInt("CoinCount", collectibles[itemName]);
@@ -108,5 +118,13 @@ public class Collectable : MonoBehaviour
             return collectibles["Coin"];
         }
         return 0;
+    }
+
+    private void updateSessionCoinCount()
+    {
+        if (sessionCoinCount != null)
+        {
+            sessionCoinCount.text = collectibles["sessionCoin"].ToString();
+        }
     }
 }
