@@ -8,14 +8,16 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject currentCoinCount;
     [SerializeField] GameObject highScoreGroup;
+    [SerializeField] GameObject sessionCoinCount;
     [SerializeField] public TextMeshProUGUI coinCount;
     [SerializeField] public TextMeshProUGUI highScore;
     private bool isPaused = false;
 
+
     private void Update()
     {
         Debug.Log("Update method called");
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && PlayerCollision.Instance.isAlive)
         {
             if (isPaused)
             {
@@ -34,6 +36,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         currentCoinCount.SetActive(true);
         highScoreGroup.SetActive(true);
+        sessionCoinCount.SetActive(false);
         isPaused = true;
         UpdateCoinDisplay();
         UpdateHighScoreDisplay();
@@ -44,6 +47,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         currentCoinCount.SetActive(false);
         highScoreGroup.SetActive(false);
+        sessionCoinCount.SetActive(true);
         Time.timeScale = 1;
         isPaused = false;
     }
