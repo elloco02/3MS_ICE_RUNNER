@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public float currentMoveSpeed = 20f; // Startgeschwindigkeit
     public float maxMoveSpeed = 200;
     public int currentHighScore = 0;    // Aktueller Score
+    private int savedHighScore = 0;
 
     private void Awake()
     {
@@ -14,12 +15,14 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Objekt über Szenen hinweg behalten
         }
         else
         {
             Destroy(gameObject); // Doppeltes Objekt zerstören
         }
+
+        savedHighScore = PlayerPrefs.GetInt("HighScore", 0);
+        Debug.Log($"Loaded high score: {savedHighScore}");
     }
 
     // Geschwindigkeit erhöhen (wird in der nächsten Szene verwendet)
@@ -36,6 +39,16 @@ public class GameManager : MonoBehaviour
     public void AddScore(int scoreFromRoundToAdd)
     {
         currentHighScore += scoreFromRoundToAdd;
+        Debug.Log($"Current score added: {currentHighScore}");
+
+        if (currentHighScore > savedHighScore)
+        {
+            savedHighScore = currentHighScore;
+
+            PlayerPrefs.SetInt("HighScore", savedHighScore);
+            PlayerPrefs.Save();
+            Debug.Log($"New high score saved: {savedHighScore}");
+        }
     }
 
     // Werte zurücksetzen (z. B. nach einem Spielende)
@@ -43,5 +56,15 @@ public class GameManager : MonoBehaviour
     {
         currentMoveSpeed = 20f;
         currentHighScore = 0;
+    }
+
+    public int GetSavedHighScore()
+    {
+        return savedHighScore;
+    }
+
+    public int GetCurrentHighScore()
+    {
+        return currentHighScore;
     }
 }

@@ -39,6 +39,11 @@ public class Collectable : MonoBehaviour
             AddCollectible(itemName);
             Debug.Log($"Eingesammelt: {itemName}. Aktuelle Anzahl: {collectibles[itemName]}");
 
+            if (itemName == "Coin")
+            {
+                PopupController.Instance.ShowPopup("Coin +1");
+            }
+
             Destroy(other.gameObject);
         }
     }
